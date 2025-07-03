@@ -27,13 +27,13 @@ const Section=({title, fetchUrl})=>{
         fetchAlbums();
     }, [fetchUrl]);
 
-    const handleToggle=()=>setShowAll(prev=> !prev);
+    const handleToggle=()=>setShowAll((prev)=> !prev);
     
     
     return(
-        <div className={styles.section}>
+        <div className={styles.section} data-testid="section">
             <div className={styles.header}>
-                <Typography variant="h6" className={styles.title}>
+                <Typography variant="h6" className={styles.title} data-testid="section-title">
                     {title}
                 </Typography>
                 <Typography variant="subtitle2" onClick={handleToggle} sx={{color: "#34C94B", cursor: "pointer", fontWeight: 600, userSelect: "none"}}>
@@ -41,23 +41,25 @@ const Section=({title, fetchUrl})=>{
                 </Typography>
             </div>
                 {loading ?(
-                    <Typography variant="body1" className={styles.loading}>
+                    <Typography variant="body1" className={styles.loading} data-testid="loading-message">
                         Loading albums...
                     </Typography>
                 ):showAll ? (
                     //Grid view
-                    <div className={`${styles.grid} ${showAll ? styles.wrap : styles.scroll}`}>
+                    <div className={`${styles.grid} ${showAll ? styles.wrap : styles.scroll}`} data-testid="album-grid">
                         {albums.map((album) =>(
                             <AlbumCard
                                 key={album.id}
                                 image={album.image}
                                 name={album.title}
                                 follows={album.follows} // Spread the album object to pass all properties
+                                data-testid={`album-card-${album.id}`}  
                             />
                         ))}
                     </div>
                 ) :(
                     // Carousel view
+                   <div className={styles.carousel} data-testid="album-carousel"> 
                     <Carousel
                         data={albums}
                         renderItem={(album)=>(
@@ -75,6 +77,7 @@ const Section=({title, fetchUrl})=>{
                             1024: {slidesPerView:6},
                         }}
                      />
+                    </div>
                 )}
               
             </div>
