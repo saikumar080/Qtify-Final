@@ -3,7 +3,7 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import styles from "./carousel.module.css";
+import styles from "./Carousel.module.css";
 import LeftNavButton from "./LeftNavButton";
 import RightNavButton from "./RightNavButton";
 

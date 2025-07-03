@@ -1,5 +1,5 @@
 import React from "react";
-import leftArrow from "../../assests/left-arrow.svg";
+import leftArrow from "../../assests/left-Carousel.svg";
  import styles from "./leftNavButton.module.css";
 
 const LeftNavButton=()=>(

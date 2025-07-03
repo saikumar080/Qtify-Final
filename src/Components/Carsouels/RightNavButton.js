@@ -1,6 +1,6 @@
 import React from "react";
-import rightArrow from "../../assests/right-arrow.svg";
-import styles from "./rightNavButton.module.css";
+import rightArrow from "../../assests/right-Carousel.svg";
+import styles from "./rightNavBar.module.css";
 
 const RightNavButton=()=>(
     <div className={`swiper-button-next-custom ${styles.swiperButton} `}>

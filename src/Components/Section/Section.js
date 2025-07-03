@@ -3,11 +3,15 @@ import axios from "axios";
 import styles from './section.module.css';
 import { Typography } from "@mui/material";
 import AlbumCard from "../Cards/Albums/AlbumCard";
+import Carousel from "../Carsouels/Carousel";
 
 const Section=({title, fetchUrl})=>{
     const [albums,setAlbums]=useState([]);
     const[showAll, setShowAll]=useState(true);
     const [loading, setLoading] = useState(true);
+
+    // Fetch albums from the provided URL
+    // This effect runs once when the component mounts
     useEffect(()=>{
         const fetchAlbums=async()=>{
             try{
@@ -36,27 +40,45 @@ const Section=({title, fetchUrl})=>{
                     {showAll ? 'Collapse': 'Show All'}
                 </Typography>
             </div>
-            <div className={`${styles.grid} ${showAll ? styles.wrap : styles.scroll}`}>
                 {loading ?(
                     <Typography variant="body1" className={styles.loading}>
                         Loading albums...
                     </Typography>
-                ):(
-                    albums.map(album =>{
-                    console.log(album);
-                    return(
-
-                    <AlbumCard
-                        key={album.id}
-                        image={album.image}
-                        name={album.title}
-                        follows={album.follows} // Spread the album object to pass all properties
-                    />
-                    )})
-                ) }
+                ):showAll ? (
+                    //Grid view
+                    <div className={`${styles.grid} ${showAll ? styles.wrap : styles.scroll}`}>
+                        {albums.map((album) =>(
+                            <AlbumCard
+                                key={album.id}
+                                image={album.image}
+                                name={album.title}
+                                follows={album.follows} // Spread the album object to pass all properties
+                            />
+                        ))}
+                    </div>
+                ) :(
+                    // Carousel view
+                    <Carousel
+                        data={albums}
+                        renderItem={(album)=>(
+                            <AlbumCard
+                                key={album.id}
+                                image={album.image}
+                                name={album.title}
+                                follows={album.follows} // Spread the album object to pass all properties
+                            />
+                        )}
+                        breakpoints={{
+                            320: {slidesPerView: 2},
+                            460:{slidesPerView: 3},
+                            640: {slidesPerView: 4},
+                            1024: {slidesPerView:6},
+                        }}
+                     />
+                )}
               
             </div>
-        </div>
-    )
+       
+    );
 }
 export default Section;
