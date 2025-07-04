@@ -7,7 +7,7 @@ import Carousel from "../Carsouels/Carousel";
 
 const Section=({title, fetchUrl})=>{
     const [albums,setAlbums]=useState([]);
-    const[showAll, setShowAll]=useState(true);
+    const[showAll, setShowAll]=useState(false);
     const [loading, setLoading] = useState(true);
 
     // Fetch albums from the provided URL
@@ -44,9 +44,11 @@ const Section=({title, fetchUrl})=>{
                     <Typography variant="body1" className={styles.loading} data-testid="loading-message">
                         Loading albums...
                     </Typography>
-                ):showAll ? (
-                    //Grid view
-                    <div className={`${styles.grid} ${showAll ? styles.wrap : styles.scroll}`} data-testid="album-grid">
+                ): (
+                    <>
+                    {showAll ? (
+                        //Grid view
+                        <div className={`${styles.grid} ${showAll ? styles.wrap : styles.scroll}`} data-testid="album-grid">
                         {albums.map((album) =>(
                             <AlbumCard
                                 key={album.id}
@@ -57,29 +59,30 @@ const Section=({title, fetchUrl})=>{
                             />
                         ))}
                     </div>
-                ) :(
-                    // Carousel view
-                   <div className={styles.carousel} data-testid="album-carousel"> 
-                    <Carousel
-                        data={albums}
-                        renderItem={(album)=>(
-                            <AlbumCard
-                                key={album.id}
-                                image={album.image}
-                                name={album.title}
-                                follows={album.follows} // Spread the album object to pass all properties
-                            />
-                        )}
-                        breakpoints={{
-                            320: {slidesPerView: 2},
-                            460:{slidesPerView: 3},
-                            640: {slidesPerView: 4},
-                            1024: {slidesPerView:6},
-                        }}
+                    ):(
+                        // Carousel view
+                        <div className={styles.carousel} data-testid="album-carousel"> 
+                            <Carousel
+                                data={albums}
+                                renderItem={(album)=>(
+                                <AlbumCard
+                                    key={album.id}
+                                    image={album.image}
+                                    name={album.title}
+                                    follows={album.follows} // Spread the album object to pass all properties
+                                />
+                            )}
+                            breakpoints={{
+                                320: {slidesPerView: 2},
+                                460:{slidesPerView: 3},
+                                640: {slidesPerView: 4},
+                                1024: {slidesPerView:6},
+                            }}
                      />
                     </div>
+                    )}
+                    </>
                 )}
-              
             </div>
        
     );
