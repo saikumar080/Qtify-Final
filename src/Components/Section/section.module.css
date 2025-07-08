@@ -1,6 +1,7 @@
 .section{
     margin: 24px 0px;
     padding: 0 16px;
+    width: 100%;
 }
 .header{
     display: flex;

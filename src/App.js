@@ -4,7 +4,8 @@ import './App.css';
 import HeroSection from './Components/HeroSection/HeroSection';
 import Navbar from './Components/Navbar/Navbar';
 import Section from './Components/Section/Section';
-
+import SongsSection from './Components/SongSection/SongsSection'
+;
 function App() {
   return (
     <div className="App">
@@ -16,9 +17,10 @@ function App() {
           fetchUrl="https://qtify-backend-labs.crio.do/albums/top"
         />
         <Section 
-          title="Top Artists"
+          title="New Albums"
           fetchUrl="https://qtify-backend-labs.crio.do/albums/new"
         />
+        <SongsSection />
       </div>
     </div>
   );

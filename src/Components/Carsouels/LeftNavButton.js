@@ -4,7 +4,7 @@ import leftArrow from "../../assests/left-Carousel.svg";
 
 const LeftNavButton=()=>(
     <div className={`swiper-button-prev-custom ${styles.button}`}>
-        <img src={leftArrow} alt="left"/>
+        <img src={leftArrow} alt="previous"/>
     </div>
 );
 export default LeftNavButton;

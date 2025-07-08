@@ -26,12 +26,12 @@ const Carousel=({data, renderItem, breakpoints})=>{
                     swiper.navigation.init();
                     swiper.navigation.update();
                 }}
+                className={styles.swiper}
             >
-                {data.map((item)=>(
-                    <SwiperSlide key={item.id}>
-                        {renderItem(item)}
-                    </SwiperSlide>
-                ))}
+                {Array.isArray(data) && 
+                    data.map((item)=>(
+                        <SwiperSlide key={item.id}>{renderItem(item)}</SwiperSlide>
+))}
             </Swiper>
            <RightNavButton />
         </div>

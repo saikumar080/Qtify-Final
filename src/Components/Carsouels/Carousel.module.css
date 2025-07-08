@@ -1,14 +1,21 @@
 .carouselContainer {
     position: relative;
     width: 100%;
-    display: flex;
-    align-items: center;
+    overflow: visible;
 }
-.swipperWrapper {
+:global(.swiper){
+    width: 100%;
+    height: auto;
+}
+:global(.swiper-slide){
+    display: flex;
+    justify-content: center;
+}
+/* .swipperWrapper {
     width: 100%;
     overflow: hidden;
     margin-right: 0!important;
-}
+} */
 @media(max-width: 600px) {
     .swiper-button-next-custom,
     .swiper-button-prev-custom {
