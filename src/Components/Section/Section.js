@@ -33,6 +33,14 @@ const Section=({title, fetchUrl, type="album", showToggle=true,filteredData=null
 
     const handleToggle=()=>setShowAll((prev)=> !prev);
     const dataToRender=filteredData || albums;
+    const    breakpoints={
+        320: {slidesPerView: 2, slidesPerGroup: 2},
+        460:{slidesPerView: 3, slidesPerGroup:3},
+        640: {slidesPerView: 4, slidesPerGroup:4},
+        768: {slidesPerView: 5, slidesPerGroup:5},
+        1024: {slidesPerView:6, slidesPerGroup:6},
+        1280: {slidesPerView: 7, slidesPerGroup:7},
+    }
     
     return(
         <div className={styles.section} data-testid="section">
@@ -60,8 +68,8 @@ const Section=({title, fetchUrl, type="album", showToggle=true,filteredData=null
                                 key={album.id}
                                 image={album.image}
                                 name={album.title}
-                                follows={album.follows} // Spread the album object to pass all properties
-                                likes={album.likes}
+                                follows={type==="album" ? album.follows: undefined} // Spread the album object to pass all properties
+                                likes={type=== "song" ? album.likes : undefined}
                                 type={type}
                                 data-testid={`album-card-${album.id}`}  
                             />
@@ -71,25 +79,20 @@ const Section=({title, fetchUrl, type="album", showToggle=true,filteredData=null
                         // Carousel view
                         <div className={styles.carousel} data-testid="album-carousel"> 
                             <Carousel
-                                data={dataToRender.slice(0,6)}
+                                data={dataToRender.slice(0,8)}
                                 renderItem={(album)=>(
                                 <AlbumCard
                                     key={album.id}
                                     image={album.image}
                                     name={album.title}
-                                    follows={album.follows} // Spread the album object to pass all properties
-                                    likes={album.likes}
+                                    follows={type==="album" ? album.follows: undefined} // Spread the album object to pass all properties
+                                    likes={type=== "song" ? album.likes : undefined}
                                     type={type}
                                 />
                             )}
-                            breakpoints={{
-                                320: {slidesPerView: 2},
-                                460:{slidesPerView: 3},
-                                640: {slidesPerView: 4},
-                                768: {slidesPerView: 5},
-                                1024: {slidesPerView:6},
-                                1280: {slidesPerView: 7},
-                            }}
+                         //Break points
+                         breakpoints={breakpoints}
+
                      />
                     </div>
                     )}

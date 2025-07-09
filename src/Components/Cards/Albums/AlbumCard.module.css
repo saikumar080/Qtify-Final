@@ -42,12 +42,12 @@
     font-size: 0.85rem;
     font-weight: 600;
     color: #FFFFFF;
-    /* text-align: left; */
+    text-align: left;
      margin-top: 8px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    /* width:100%; */
+    width:100%;
 }
 .albumName:hover{
     color: #34C94B;

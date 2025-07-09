@@ -2,6 +2,8 @@
     position: relative;
     width: 100%;
     overflow: visible;
+    display: flex;
+    align-items: center;
 }
 :global(.swiper){
     width: 100%;
@@ -11,11 +13,11 @@
     display: flex;
     justify-content: center;
 }
-/* .swipperWrapper {
+.swiperWrapper {
     width: 100%;
     overflow: hidden;
     margin-right: 0!important;
-} */
+}
 @media(max-width: 600px) {
     .swiper-button-next-custom,
     .swiper-button-prev-custom {

@@ -8,9 +8,20 @@
     padding: 6px;
     border-radius: 50%;
     left: -30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color0.3s ease;
+}
+.button:hover{
+  background-color: rgba(0,0,0,0.6);
+}
+.button img{
+  width: 20px;
+  height: 20px;
 }
 @media(max-width: 600px) {
-    .button {
-        display: none;
+    .button{
+      display: none;
     }
 }
