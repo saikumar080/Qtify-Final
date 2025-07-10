@@ -79,7 +79,7 @@ const Section=({title, fetchUrl, type="album", showToggle=true,filteredData=null
                         // Carousel view
                         <div className={styles.carousel} data-testid="album-carousel"> 
                             <Carousel
-                                data={dataToRender.slice(0,8)}
+                                data={dataToRender}
                                 renderItem={(album)=>(
                                 <AlbumCard
                                     key={album.id}
