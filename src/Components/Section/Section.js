@@ -33,24 +33,7 @@ const Section=({title, fetchUrl, type="album", showToggle=true,filteredData=null
 
     const handleToggle=()=>setShowAll((prev)=> !prev);
     const dataToRender=filteredData || albums;
-    const    breakpoints={
-          0: {
-    slidesPerView: 1.2,
-    slidesPerGroup: 1,
-  },
-  600: {
-    slidesPerView: 2.2,
-    slidesPerGroup: 2,
-  },
-  960: {
-    slidesPerView: 3.2,
-    slidesPerGroup: 3,
-  },
-  1280: {
-    slidesPerView: 4.2,
-    slidesPerGroup: 4,
-  },
-    }
+ 
     
     return(
         <div className={styles.section} data-testid="section">
@@ -101,9 +84,7 @@ const Section=({title, fetchUrl, type="album", showToggle=true,filteredData=null
                                     data-testid={`album-card-${album.id}`}
                                 />
                             )}
-                         //Break points
-                         breakpoints={breakpoints}
-
+                         
                      />
                     </div>
                     )}

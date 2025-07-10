@@ -37,9 +37,30 @@ const Carousel=({data, renderItem, breakpoints})=>{
                         swiper.navigation.update();
                     })
                 }}
-                breakpoints={breakpoints}
+                breakpoints={{
+                0: {
+                slidesPerView: 1.2,
+                slidesPerGroup: 1,
+                spaceBetween: 12,
+            },
+            600: {
+                slidesPerView: 2.2,
+                slidesPerGroup: 2,
+                spaceBetween: 16,
+            },
+            960: {
+                slidesPerView: 3.2,
+                slidesPerGroup: 3,
+                spaceBetween: 20,
+            },
+            1280: {
+                slidesPerView: 4.2,
+                slidesPerGroup: 4,
+                spaceBetween: 24,
+            },
+          }}
 
-                className={styles.swiper}
+        className={styles.swiper}
             >
                 {data.map((item)=>(
                     <SwiperSlide key={item.id}>{renderItem(item)}</SwiperSlide>
