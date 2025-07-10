@@ -88,6 +88,7 @@ const Section=({title, fetchUrl, type="album", showToggle=true,filteredData=null
                                     follows={type==="album" ? album.follows: undefined} // Spread the album object to pass all properties
                                     likes={type=== "song" ? album.likes : undefined}
                                     type={type}
+                                    data-testid={`album-card-${album.id}`}
                                 />
                             )}
                          //Break points
