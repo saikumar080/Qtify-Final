@@ -34,12 +34,22 @@ const Section=({title, fetchUrl, type="album", showToggle=true,filteredData=null
     const handleToggle=()=>setShowAll((prev)=> !prev);
     const dataToRender=filteredData || albums;
     const    breakpoints={
-        320: {slidesPerView: 2, slidesPerGroup: 2},
-        460:{slidesPerView: 3, slidesPerGroup:3},
-        640: {slidesPerView: 4, slidesPerGroup:4},
-        768: {slidesPerView: 5, slidesPerGroup:5},
-        1024: {slidesPerView:6, slidesPerGroup:6},
-        1280: {slidesPerView: 7, slidesPerGroup:7},
+          0: {
+    slidesPerView: 1.2,
+    slidesPerGroup: 1,
+  },
+  600: {
+    slidesPerView: 2.2,
+    slidesPerGroup: 2,
+  },
+  960: {
+    slidesPerView: 3.2,
+    slidesPerGroup: 3,
+  },
+  1280: {
+    slidesPerView: 4.2,
+    slidesPerGroup: 4,
+  },
     }
     
     return(

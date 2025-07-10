@@ -28,13 +28,17 @@ const Carousel=({data, renderItem, breakpoints})=>{
                 spaceBetween={20}
                 navigation={navigation}
                 loop={false}
-                // onInit={(swiper)=>{
-                //     swiper.params.navigation.prevEl =".swiper-button-prev-custom";
-                //     swiper.params.navigation.nextEl = ".swiper-button-next-custom";
-                //     swiper.navigation.init();
-                //     swiper.navigation.update();
-                // }}
+                onSwiper={(swiper)=>{
+                    setTimeout(()=>{
+                        swiper.params.navigation.prevEl=prevRef.current;
+                        swiper.params.navigation.nextEl=nextRef.current;
+                        swiper.navigation.destroy();
+                        swiper.navigation.init();
+                        swiper.navigation.update();
+                    })
+                }}
                 breakpoints={breakpoints}
+
                 className={styles.swiper}
             >
                 {data.map((item)=>(

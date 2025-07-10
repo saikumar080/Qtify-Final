@@ -48,6 +48,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     width:100%;
+    max-width: 200px;
 }
 .albumName:hover{
     color: #34C94B;
