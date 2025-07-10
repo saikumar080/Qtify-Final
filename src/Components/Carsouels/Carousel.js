@@ -11,29 +11,29 @@ import RightNavButton from "./RightNavButton";
 const Carousel=({data, renderItem, breakpoints})=>{
     const prevRef=useRef(null);
     const nextRef=useRef(null);
-    const[swiperReady,setSwiperReady]=useState(false);
+    const[navigation,setNavigation]=useState(false);
         useEffect(()=>{
-            setSwiperReady(true);
+            setNavigation({
+                prevEl: prevRef.current,
+                nextEl: nextRef.current
+            });
         },[]);
     return(
         <div className={styles.carouselContainer}>
-            <LeftNavButton ref={prevRef} />
-            {swiperReady &&(
+            <div ref={prevRef}>
+                <LeftNavButton />
+            </div>
             <Swiper
                 modules={[Navigation]}
                 spaceBetween={20}
-                navigation={{
-                    nextEl: prevRef.current,
-                    prevEl:nextRef.current,
-                }}
+                navigation={navigation}
                 loop={false}
-                watchOverflow={true}
-                onInit={(swiper)=>{
-                    swiper.params.navigation.prevEl =".swiper-button-prev-custom";
-                    swiper.params.navigation.nextEl = ".swiper-button-next-custom";
-                    swiper.navigation.init();
-                    swiper.navigation.update();
-                }}
+                // onInit={(swiper)=>{
+                //     swiper.params.navigation.prevEl =".swiper-button-prev-custom";
+                //     swiper.params.navigation.nextEl = ".swiper-button-next-custom";
+                //     swiper.navigation.init();
+                //     swiper.navigation.update();
+                // }}
                 breakpoints={breakpoints}
                 className={styles.swiper}
             >
@@ -41,8 +41,10 @@ const Carousel=({data, renderItem, breakpoints})=>{
                     <SwiperSlide key={item.id}>{renderItem(item)}</SwiperSlide>
                 ))}
             </Swiper>
-            )}
-        <RightNavButton ref={nextRef} />
+          <div ref={nextRef}>
+                <RightNavButton/>
+          </div>  
+        
     </div>
  )
 
