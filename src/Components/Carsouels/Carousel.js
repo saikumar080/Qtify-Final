@@ -11,17 +11,7 @@ import RightNavButton from "./RightNavButton";
 const Carousel=({data, renderItem, breakpoints})=>{
     const prevRef=useRef(null);
     const nextRef=useRef(null);
-//      useEffect(() => {
-//     if (
-//       typeof window !== "undefined" &&
-//       prevRef.current &&
-//       nextRef.current
-//     ) {
-//       // Force Swiper to update navigation when refs are ready
-//       document.querySelector(".swiper-button-prev-custom").classList.remove("swiper-button-disabled");
-//       document.querySelector(".swiper-button-next-custom").classList.remove("swiper-button-disabled");
-//     }
-//   }, []);
+
     return(
         <div className={styles.carouselContainer}>
             <LeftNavButton ref={prevRef} />

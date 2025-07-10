@@ -15,6 +15,7 @@ function App() {
         <Section 
           title="Top Albums"
           fetchUrl="https://qtify-backend-labs.crio.do/albums/top"
+          type="album"
         />
         <Section 
           title="New Albums"
