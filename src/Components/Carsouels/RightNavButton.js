@@ -3,8 +3,8 @@ import rightArrow from "../../assests/right-Carousel.svg";
 import styles from "./rightNavBar.module.css";
 
 const RightNavButton=forwardRef((props,ref)=>(
-    <div ref={ref} className={`swiper-button-next-custom ${styles.swiperButton} `}>
-        <img src={rightArrow} alt="right" />
-    </div>
+    <button ref={ref} className={styles.navButton}>
+        <img src={rightArrow} alt="right-arrow" />
+    </button>
 ))
 export default RightNavButton;

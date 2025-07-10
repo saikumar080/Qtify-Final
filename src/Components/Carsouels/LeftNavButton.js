@@ -3,8 +3,8 @@ import leftArrow from "../../assests/left-Carousel.svg";
  import styles from "./leftNavButton.module.css";
 
 const LeftNavButton=forwardRef((props, ref)=>(
-    <div ref={ref} className={`swiper-button-prev-custom ${styles.button}`}>
-        <img src={leftArrow} alt="previous"/>
-    </div>
+    <button ref={ref} className={styles.navButton}>
+        <img src={leftArrow} alt="left-arrow"/>
+    </button>
 ));
 export default LeftNavButton;
