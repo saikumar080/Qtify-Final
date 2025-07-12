@@ -30,14 +30,16 @@ const Carousel=({data, renderItem, breakpoints})=>{
                 loop={false}
                 onSwiper={(swiper)=>{
                     setTimeout(()=>{
-                        swiper.params.navigation.prevEl=prevRef.current;
-                        swiper.params.navigation.nextEl=nextRef.current;
-                        swiper.navigation.destroy();
-                        swiper.navigation.init();
-                        swiper.navigation.update();
+                        if (swiper.params.navigation && swiper.navigation && prevRef.current && nextRef.current) {
+                            swiper.params.navigation.prevEl = prevRef.current;
+                            swiper.params.navigation.nextEl = nextRef.current;
+                            swiper.navigation.destroy();
+                            swiper.navigation.init();
+                            swiper.navigation.update();
+                        }
                     })
                 }}
-                breakpoints={{
+                breakpoints={breakpoints || {
                 0: {
                 slidesPerView: 2,
                 slidesPerGroup: 2,
@@ -50,12 +52,12 @@ const Carousel=({data, renderItem, breakpoints})=>{
             },
             960: {
                 slidesPerView: 4,
-                slidesPerGroup: 4,
+                slidesPerGroup: 2,
                 spaceBetween: 20,
             },
             1280: {
                 slidesPerView: 6,
-                slidesPerGroup: 6,
+                slidesPerGroup: 2,
                 spaceBetween: 24,
             },
           }}
