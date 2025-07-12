@@ -29,6 +29,7 @@ const Carousel=({data, renderItem, breakpoints})=>{
                 navigation={navigation}
                 loop={false}
                 watchSlidesProgress={true}
+                //  virtualTranslate={true}
                 onSwiper={(swiper)=>{
                     setTimeout(()=>{
                         if (swiper.params.navigation && swiper.navigation && prevRef.current && nextRef.current) {
@@ -58,7 +59,7 @@ const Carousel=({data, renderItem, breakpoints})=>{
             },
             1280: {
                 slidesPerView: 6,
-                slidesPerGroup: 1,
+                slidesPerGroup: 2,
                 spaceBetween: 24,
             },
           }}
