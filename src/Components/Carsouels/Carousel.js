@@ -20,7 +20,7 @@ const Carousel=({data, renderItem, breakpoints})=>{
         },[]);
     return(
         <div className={styles.carouselContainer}>
-            <div ref={prevRef}>
+            <div ref={prevRef} className={styles.LeftNavButton}>
                 <LeftNavButton />
             </div>
             <Swiper
@@ -66,7 +66,7 @@ const Carousel=({data, renderItem, breakpoints})=>{
                     <SwiperSlide key={item.id}>{renderItem(item)}</SwiperSlide>
                 ))}
             </Swiper>
-          <div ref={nextRef}>
+          <div ref={nextRef} className={styles.RightNavButton}>
                 <RightNavButton/>
           </div>  
         
