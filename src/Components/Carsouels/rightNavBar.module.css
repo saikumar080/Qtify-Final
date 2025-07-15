@@ -1,7 +1,6 @@
-.swiperButton{
-   position: absolute;
+.swiperButton {
+  position: absolute;
   top: 50%;
-  right: 8px;
   transform: translateY(-50%);
   z-index: 10;
   cursor: pointer;
@@ -13,15 +12,26 @@
   justify-content: center;
   transition: background-color 0.3s ease;
 }
-.swiperButton:hover{
-  background-color: rgba(0,0,0,0.6);
+
+/* Positioning for right and left buttons */
+.right {
+  right: 8px;
 }
-.swiperButton img{
+
+
+
+.swiperButton:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.swiperButton img {
   width: 20px;
   height: 20px;
 }
-@media(max-width: 600px){
-  .swiperButton{
+
+/* Responsive: hide buttons on mobile */
+@media (max-width: 600px) {
+  .swiperButton {
     display: none;
   }
 }

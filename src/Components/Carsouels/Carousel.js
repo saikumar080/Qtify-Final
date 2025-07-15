@@ -44,22 +44,22 @@ const Carousel=({data, renderItem, breakpoints})=>{
                 breakpoints={breakpoints || {
                 0: {
                 slidesPerView: 2,
-                slidesPerGroup: 1,
+                slidesPerGroup: 2,
                 spaceBetween: 12,
             },
             600: {
                 slidesPerView: 3,
-                slidesPerGroup: 1,
+                slidesPerGroup: 3,
                 spaceBetween: 16,
             },
             960: {
                 slidesPerView: 4,
-                slidesPerGroup: 1,
+                slidesPerGroup: 4,
                 spaceBetween: 20,
             },
             1280: {
                 slidesPerView: 6,
-                slidesPerGroup: 2,
+                slidesPerGroup: 6,
                 spaceBetween: 24,
             },
           }}

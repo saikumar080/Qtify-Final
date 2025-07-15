@@ -1,27 +1,37 @@
-.button{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-    cursor: pointer;
-    background-color: rgba(0,0,0,0.4);
-    padding: 6px;
-    border-radius: 50%;
-    left: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color0.3s ease;
+.swiperButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  cursor:pointer;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
 }
-.button:hover{
-  background-color: rgba(0,0,0,0.6);
+
+/* Positioning for right and left buttons */
+
+
+.left {
+  left: 8px;
 }
-.button img{
+
+.swiperButton:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.swiperButton img {
   width: 20px;
   height: 20px;
 }
-@media(max-width: 600px) {
-    .button{
-      display: none;
-    }
+
+/* Responsive: hide buttons on mobile */
+@media (max-width: 600px) {
+  .swiperButton {
+    display: none;
+  }
 }
