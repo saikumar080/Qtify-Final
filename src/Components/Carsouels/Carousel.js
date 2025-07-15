@@ -31,6 +31,7 @@ const Carousel=({data, renderItem, breakpoints})=>{
                 watchSlidesProgress={true}
                 //  virtualTranslate={true}
                 onSwiper={(swiper)=>{
+                    console.log("swiper initialized with slidesPerView:",swiper.params.slidesPerView)
                     setTimeout(()=>{
                         if (swiper.params.navigation && swiper.navigation && prevRef.current && nextRef.current) {
                             swiper.params.navigation.prevEl = prevRef.current;
