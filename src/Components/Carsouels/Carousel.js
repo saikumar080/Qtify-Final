@@ -16,56 +16,38 @@ const Carousel = ({ data, renderItem, breakpoints }) => {
         if (swiperRef.current && swiperRef.current.params) {
             swiperRef.current.params.navigation.prevEl = prevRef.current;
             swiperRef.current.params.navigation.nextEl = nextRef.current;
-            swiperRef.current.navigation.destroy();  // Clear existing bindings
-            swiperRef.current.navigation.init();     // Initialize with new refs
-            swiperRef.current.navigation.update();   // Update navigation state
+            swiperRef.current.navigation.destroy();
+            swiperRef.current.navigation.init();
+            swiperRef.current.navigation.update();
         }
-    }, [data]); // Re-run when data changes
+    }, [data]);
 
     return (
         <div className={styles.carouselContainer}>
-            <div ref={prevRef} className={styles.LeftNavButton}>
+            <div ref={prevRef} className="swiper-button-prev-custom">
                 <LeftNavButton />
             </div>
             <Swiper
                 modules={[Navigation]}
                 spaceBetween={20}
+                loop={false}
                 watchSlidesProgress={true}
                 observer={true}
                 observeParents={true}
-                loop={false}
                 onSwiper={(swiper) => { swiperRef.current = swiper; }}
                 breakpoints={breakpoints || {
-                    0: {
-                        slidesPerView: 2,
-                        slidesPerGroup: 2,
-                        spaceBetween: 12,
-                    },
-                    600: {
-                        slidesPerView: 3,
-                        slidesPerGroup: 3,
-                        spaceBetween: 16,
-                    },
-                    960: {
-                        slidesPerView: 4,   // This is CRITICAL
-                        slidesPerGroup: 4,  // This is CRITICAL
-                        spaceBetween: 20,
-                    },
-                    1280: {
-                        slidesPerView: 4,   // KEEP IT 4 for Test Case-13
-                        slidesPerGroup: 4,  // KEEP IT 4 for Test Case-13
-                        spaceBetween: 24,
-                    },
+                    0: { slidesPerView: 2, slidesPerGroup: 2 },
+                    600: { slidesPerView: 3, slidesPerGroup: 3 },
+                    960: { slidesPerView: 4, slidesPerGroup: 4 },  // Critical for TC-13
+                    1280: { slidesPerView: 4, slidesPerGroup: 4 },
                 }}
                 className={styles.swiper}
             >
                 {data.map((item) => (
-                    <SwiperSlide key={item.id}>
-                        {renderItem(item)}
-                    </SwiperSlide>
+                    <SwiperSlide key={item.id}>{renderItem(item)}</SwiperSlide>
                 ))}
             </Swiper>
-            <div ref={nextRef} className={styles.RightNavButton}>
+            <div ref={nextRef} className="swiper-button-next-custom">
                 <RightNavButton />
             </div>
         </div>

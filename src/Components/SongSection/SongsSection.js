@@ -1,6 +1,6 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import styles from '../SongSection/songsSection.module.css';
+import axios from 'axios';
+import styles from './songsSection.module.css';
 import { Box, Tab, Tabs } from '@mui/material';
 import Section from '../Section/Section';
 
@@ -11,7 +11,7 @@ const SongsSection = () => {
 
     const handleTabChange = (event, newValue) => {
         setActiveTab(newValue);
-    };
+    }
 
     useEffect(() => {
         const fetchSongsAndGenres = async () => {
@@ -21,7 +21,7 @@ const SongsSection = () => {
                     axios.get("https://qtify-backend-labs.crio.do/genres")
                 ]);
                 setSongs(songsRes.data);
-                setGenres(genresRes.data.data || genresRes.data); // Handle both cases
+                setGenres(genresRes.data.data || genresRes.data);
             } catch (err) {
                 console.error("Error fetching songs or genres:", err);
             }
@@ -29,9 +29,7 @@ const SongsSection = () => {
         fetchSongsAndGenres();
     }, []);
 
-    const filteredSongs = activeTab === 'all'
-        ? songs
-        : songs.filter((song) => song.genre?.key === activeTab.toLowerCase());
+    const filteredSongs = activeTab === 'all' ? songs : songs.filter(song => song.genre?.key === activeTab.toLowerCase());
 
     return (
         <div className={styles.wrapper}>
@@ -40,23 +38,14 @@ const SongsSection = () => {
                     value={activeTab}
                     onChange={handleTabChange}
                     variant="scrollable"
-                    scrollButtons
-                    allowScrollButtonsMobile
+                    scrollButtons={false}    // <-- Disabled Scroll Buttons to fix pointer-events Cypress issue
+                    allowScrollButtonsMobile={false}
                     className={styles.tabs}
                     TabIndicatorProps={{ style: { backgroundColor: '#34C94B' } }}
                 >
-                    <Tab
-                        label="All"
-                        value="all"
-                        className={styles.tab}
-                    />
+                    <Tab label="All" value="all" className={styles.tab} />
                     {genres.map((genre) => (
-                        <Tab
-                            key={genre.key}
-                            label={genre.label}
-                            value={genre.label}
-                            className={styles.tab}
-                        />
+                        <Tab key={genre.key} label={genre.label} value={genre.label} className={styles.tab} />
                     ))}
                 </Tabs>
             </Box>
