@@ -30,18 +30,19 @@ const Carousel=({data, renderItem, breakpoints})=>{
                 loop={false}
                 watchSlidesProgress={true}
                 //  virtualTranslate={true}
-                onSwiper={(swiper)=>{
-                    console.log("swiper initialized with slidesPerView:",swiper.params.slidesPerView)
-                    setTimeout(()=>{
-                        if (swiper.params.navigation && swiper.navigation && prevRef.current && nextRef.current) {
-                            swiper.params.navigation.prevEl = prevRef.current;
-                            swiper.params.navigation.nextEl = nextRef.current;
-                            swiper.navigation.destroy();
-                            swiper.navigation.init();
-                            swiper.navigation.update();
-                        }
-                    })
-                }}
+onSwiper={(swiper) => {
+  console.log("swiper initialized with slidesPerView:", swiper.params.slidesPerView);
+  requestAnimationFrame(() => {
+    if (swiper.params.navigation && swiper.navigation && prevRef.current && nextRef.current) {
+      swiper.params.navigation.prevEl = prevRef.current;
+      swiper.params.navigation.nextEl = nextRef.current;
+      swiper.navigation.destroy();
+      swiper.navigation.init();
+      swiper.navigation.update();
+    }
+  });
+}}
+
                 breakpoints={breakpoints || {
                 0: {
                 slidesPerView: 2,

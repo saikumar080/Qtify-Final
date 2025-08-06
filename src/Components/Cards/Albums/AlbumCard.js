@@ -5,7 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Chip from '@mui/material/Chip';
 import Typography from '@mui/material/Typography';
 import { Grid } from "@mui/material";
-const AlbumCard=({image, name, follows})=>{
+const AlbumCard=({image, name, follows, type, likes})=>{
     return(
        <div className={styles.wrapper}>
         <Card className={styles.card} elevation={2}>
@@ -33,7 +33,7 @@ const AlbumCard=({image, name, follows})=>{
                         borderBottomRightRadius:"8px",
                     }}>
                         <Chip
-                            label={`${follows} Follows`} 
+                            label={ type=== "album" ? `${follows} Follows`: `${likes} Likes`} 
                             className={styles.chip}
                             size="small"
                             sx={{ backgroundColor: '#000000', color: '#FFFFFF', fontSize:'0.7rem',padding:'0 6px', borderRadius:'4px',fontWeight:500}}
