@@ -16,11 +16,11 @@ const Carousel = ({ data, renderItem, breakpoints }) => {
         if (swiperRef.current && swiperRef.current.params) {
             swiperRef.current.params.navigation.prevEl = prevRef.current;
             swiperRef.current.params.navigation.nextEl = nextRef.current;
-            swiperRef.current.navigation.destroy(); // destroy previous bindings
-            swiperRef.current.navigation.init();    // init with new refs
-            swiperRef.current.navigation.update();  // update navigation state
+            swiperRef.current.navigation.destroy();  // Clear existing bindings
+            swiperRef.current.navigation.init();     // Initialize with new refs
+            swiperRef.current.navigation.update();   // Update navigation state
         }
-    }, [data]); // Re-run when data changes
+    }, [data]); // Re-run if data changes
 
     return (
         <div className={styles.carouselContainer}>
@@ -51,8 +51,8 @@ const Carousel = ({ data, renderItem, breakpoints }) => {
                         spaceBetween: 20,
                     },
                     1280: {
-                        slidesPerView: 6,
-                        slidesPerGroup: 6,
+                        slidesPerView: 4,   //  Fixed to 4 for large screens
+                        slidesPerGroup: 4,  //  Group slides in 4s
                         spaceBetween: 24,
                     },
                 }}
