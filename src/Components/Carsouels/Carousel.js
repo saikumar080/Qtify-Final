@@ -20,7 +20,7 @@ const Carousel = ({ data, renderItem, breakpoints }) => {
             swiperRef.current.navigation.init();     // Initialize with new refs
             swiperRef.current.navigation.update();   // Update navigation state
         }
-    }, [data]); // Re-run if data changes
+    }, [data]); // Re-run when data changes
 
     return (
         <div className={styles.carouselContainer}>
@@ -30,10 +30,11 @@ const Carousel = ({ data, renderItem, breakpoints }) => {
             <Swiper
                 modules={[Navigation]}
                 spaceBetween={20}
-                onSwiper={(swiper) => {
-                    swiperRef.current = swiper; // Save Swiper instance
-                }}
+                watchSlidesProgress={true}
+                observer={true}
+                observeParents={true}
                 loop={false}
+                onSwiper={(swiper) => { swiperRef.current = swiper; }}
                 breakpoints={breakpoints || {
                     0: {
                         slidesPerView: 2,
@@ -46,13 +47,13 @@ const Carousel = ({ data, renderItem, breakpoints }) => {
                         spaceBetween: 16,
                     },
                     960: {
-                        slidesPerView: 4,
-                        slidesPerGroup: 4,
+                        slidesPerView: 4,   // This is CRITICAL
+                        slidesPerGroup: 4,  // This is CRITICAL
                         spaceBetween: 20,
                     },
                     1280: {
-                        slidesPerView: 4,   //  Fixed to 4 for large screens
-                        slidesPerGroup: 4,  //  Group slides in 4s
+                        slidesPerView: 4,   // KEEP IT 4 for Test Case-13
+                        slidesPerGroup: 4,  // KEEP IT 4 for Test Case-13
                         spaceBetween: 24,
                     },
                 }}
